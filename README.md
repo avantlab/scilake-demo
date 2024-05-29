@@ -55,11 +55,14 @@ avantgraph openaire/ --query-type=cypher lookup.cypher
 ```
 
 ### Run a query using the BOLT protocol
-TODO: describe the BOLT feature.
+[BOLT](https://neo4j.com/docs/bolt/current/bolt/) is a protocol designed by Neo4J for communication with a remote database.
+AvantGraph can operate in *server mode*, making it a drop-in replacement for typical Neo4J setups.
+You can use the existing Neo4J client libraries to interact with AvantGraph as if it was a Neo4J database.
 
 #### Start AvantGraph in server mode
-
-`ag-server` is the tool to start the local server. The graph repository is required to be specified. The listening host and port are also required.
+`ag-server` is the server binary.
+Neo4J uses port 7687 by default, so we do the same with our server.
+We can use the same OpenAIRE demo graph as we did for the CLI interface:
 
 ```bash
 ag-server --listen 0.0.0.0:7687 openaire/
