@@ -97,7 +97,7 @@ It is also possible to use the server with any of the [other Neo4J libraries for
 ### Running Algorithms
 In addition to Cypher queries, AvantGraph also supports the execution of user-defined graph algorithms.
 We include an implementation of the [PageRank](https://en.wikipedia.org/wiki/PageRank) algorithm in `pr_openaire.mlir`.
-It represents the following GraphAlg program:
+It represents the following [Graphalg](https://repository.tudelft.nl/islandora/object/uuid%3A1b5f0236-87f2-41f0-8af8-0911cb3b4d54) program:
 
 ```
 func withDamping(degree:int, damping:real) -> real {
@@ -142,13 +142,14 @@ func PageRank(graph: Matrix<s1, s1, bool>, damping:real, iterations:int) -> Vect
 }
 ```
 
-GraphAlg is designed to be embedded inside of Cypher queries, but the GraphAlg compiler has not yet been updated to use the new storage layer shipped with the latest AvantGraph release, so we provide a manually constructed execution plan instead.
+Graphalg is designed to be embedded inside of Cypher queries, but the Graphalg compiler has not yet been updated to use the new storage layer shipped with the latest AvantGraph release, so we provide a manually constructed execution plan instead.
 This plan runs 14 iterations of PageRank over the OpenAIRE citation graph and reports the final score of each vertex.
-To execute it, we use the `ag-exec` binary included in the docker image:
+To execute it, we use the `ag-exec` binary included in the docker image.
+In order to not overwhelm the docker shell with too much output data, we recommend piping the results to a temporary file.
 
 ```bash
 # Run inside the container:
-ag-exec openaire/ pr_openaire.mlir
+ag-exec openaire/ pr_openaire.mlir > /tmp/pr_out.txt
 ```
 
 ### Load the OpenAIRE graph manually
