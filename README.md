@@ -205,3 +205,7 @@ ag-load-graph --graph-format=json <(zcat /openaire/ag/mapped/*.json.gz) my_opena
 ```
 
 *note: The loading process can take 30 minutes up to an hour.*
+
+## Acknowledgements
+
+This work was supported by the European Union's Horizon Europe research and innovation programme under grant agreement **No. 101058573** ([SciLake](https://scilake.eu/)).
